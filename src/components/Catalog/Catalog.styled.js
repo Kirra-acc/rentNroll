@@ -5,11 +5,6 @@ export const Container = styled.div`
   margin: 0 auto;
   padding-left: 8px;
   padding-right: 8px;
-
-  & .flex-container {
-    display: flex;
-    justify-content: space-between;
-  }
 `;
 export const CatalogList = styled.ul`
   display: flex;
@@ -25,20 +20,17 @@ export const CatalogListItem = styled.li`
   flex-direction: column;
   align-items: flex-start;
   width: 274px;
-  /* overflow: hidden; */
   img {
     margin-bottom: 8px;
     border-radius: 14px;
   }
-  /* div {
-    display: flex;
-    gap: 87px;
-  } */
 `;
 
 export const TextWrapper = styled.div`
   display: flex;
-  gap: 87px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
   margin-bottom: 8px;
   h2 {
     font-family: "Manrope Medium";
@@ -50,3 +42,35 @@ export const TextWrapper = styled.div`
     }
   }
 `;
+
+export const Characteristics = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-family: "Manrope Regular";
+  font-size: 12px;
+  color: var(--accent-descr-text);
+  margin-bottom: 28px;
+`;
+
+export const ItemButton = styled.button`
+display: flex;
+width: 274px;
+height: 44px;
+padding: 12px 99px;
+justify-content: center;
+align-items: center;
+border-radius: 12px;
+background-color: var(--button);
+border: none;
+outline: transparent;
+
+font-family: "Manrope SemiBold";
+font-size: 14px;
+line-height: 1.43;
+color: var(--white);
+&:hover,
+&:focus {
+    background-color: var(--button-active);
+  }
+`

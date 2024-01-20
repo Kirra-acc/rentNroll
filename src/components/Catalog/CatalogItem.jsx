@@ -1,5 +1,10 @@
 import React from "react";
-import { CatalogListItem, TextWrapper } from "./Catalog.styled.js";
+import {
+  CatalogListItem,
+  Characteristics,
+  ItemButton,
+  TextWrapper,
+} from "./Catalog.styled.js";
 
 // import { useDispatch } from "react-redux";
 
@@ -18,21 +23,27 @@ const CatalogItem = ({ item }) => {
       />
       <TextWrapper>
         <h2>
-          {item?.make} <span>{item?.model}</span>, {item?.year}
+          {item?.make}
+          {(item?.model === "Enclave" ||
+            item?.model === "XC90" ||
+            item?.model === "XC60") && <span> {item?.model}</span>}
+          , {item?.year}
         </h2>
         <p>{item?.rentalPrice}</p>
       </TextWrapper>
 
-      <p>{city} |</p>
-      <p>{country} |</p>
-      <p>{item?.rentalCompany}</p>
+      <Characteristics>
+        <p>{city} |</p>
+        <p>{country} |</p>
+        <p>{item?.rentalCompany}</p>
 
-      <p>{item?.type} |</p>
-      <p>{item?.model} |</p>
-      <p>{item?.id} |</p>
-      <p>{item?.accessories[1]}</p>
+        <p>{item?.type} |</p>
+        <p>{item?.model} |</p>
+        <p>{item?.id} |</p>
+        <p>{item?.accessories[1]}</p>
+      </Characteristics>
 
-      <button type="button">Learn more</button>
+      <ItemButton type="button">Learn more</ItemButton>
     </CatalogListItem>
   );
 };
