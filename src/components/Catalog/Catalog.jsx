@@ -1,30 +1,28 @@
-// import React from 'react'
+import React from 'react'
 
 import { useEffect } from "react";
 import { fetchCarsGalleryThunk } from "../../redux/operations";
 import { useDispatch, useSelector } from "react-redux";
-import { selectorCars } from "../../redux/selectors";
+import { selectCars } from "../../redux/selectors";
+import CatalogItem from "./CatalogItem.jsx";
+import { CatalogList, Container } from './Catalog.styled.js';
 
 const Catalog = () => {
   const dispatch = useDispatch();
-  const Gallery = useSelector(selectorCars);
+  const gallery = useSelector(selectCars);
 
   useEffect(() => {
     dispatch(fetchCarsGalleryThunk());
   }, [dispatch]);
 
   return (
-    <>
-      <ol>
-        {Gallery.map((item) => {
-          return (
-            <li key={item.id}>
-              <span>{item.model}</span>
-            </li>
-          );
-        })}
-      </ol>
-    </>
+    <Container>
+      <CatalogList>
+        {gallery?.map((item) => (
+          <CatalogItem key={item?.id} item={item} />
+        ))}
+      </CatalogList>
+    </Container>
   );
 };
 

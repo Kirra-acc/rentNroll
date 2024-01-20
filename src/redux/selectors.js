@@ -1,1 +1,1 @@
-export const selectorCars = state => state.carsGallery.carItems?.items;
+export const selectCars = state => state.carsGallery.carItems?.items;
