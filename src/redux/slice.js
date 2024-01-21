@@ -6,14 +6,25 @@ export const slice = createSlice({
   name: "cars",
   initialState: {
     items: [],
+    modalIsOpen: false,
     loading: false,
-    select: '',
+    select: "",
     categories: [],
+    selectedItemId: "",
   },
 
   reducers: {
     changeSelectFilter: (state, { payload }) => {
       state.select = payload;
+    },
+    changeModalOpen: (state, { payload }) => {
+      state.modalIsOpen = payload;
+    },
+    changeModalClose: (state, { payload }) => {
+      state.modalIsOpen = payload;
+    },
+    changeSelectedItemId: (state, { payload }) => {
+      state.selectedItemId = payload;
     },
   },
   extraReducers: (builder) => {
@@ -25,4 +36,5 @@ export const slice = createSlice({
 });
 
 export default slice.reducer;
-export const { changeSelectFilter } = slice.actions;
+export const { changeSelectFilter, changeModalOpen, changeModalClose, changeSelectedItemId } =
+  slice.actions;

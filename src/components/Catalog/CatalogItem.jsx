@@ -7,13 +7,23 @@ import {
   StyledFavBtn,
 } from "./Catalog.styled.js";
 import { FaRegHeart } from "react-icons/fa";
-
-// import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { changeModalOpen, changeModalClose, changeSelectedItemId } from "../../redux/slice.js";
+import { modalIsOpen, selectedItemId } from "../../redux/selectors.js";
 
 const CatalogItem = ({ item }) => {
-  //   const dispatch = useDispatch();
-  const city = item.address.split(",")[1].trim();
-  const country = item.address.split(",")[2].trim();
+  const dispatch = useDispatch();
+  const isModalOpen = useSelector(modalIsOpen);
+  const selectedId = useSelector(selectedItemId);
+
+  const clickBackdrop = (e) => {
+    if (e.target === e.currentTarget) {
+      dispatch(changeModalClose(false));
+    }
+  };
+
+  const city = item?.address.split(",")[1]?.trim();
+  const country = item?.address.split(",")[2]?.trim();
 
   return (
     <StyledListItem key={item?.id}>
@@ -53,7 +63,26 @@ const CatalogItem = ({ item }) => {
         <p>{item?.accessories[1]}</p>
       </StyledDesc>
 
-      <StyledItemBtn type="button">Learn more</StyledItemBtn>
+      <StyledItemBtn
+        type="button"
+        onClick={() => {
+          dispatch(changeSelectedItemId(item?.id));
+          dispatch(changeModalOpen(true));
+        }}
+      >
+        Learn more
+      </StyledItemBtn>
+
+      {isModalOpen && selectedId === item?.id && (
+        <form open={isModalOpen} onClick={clickBackdrop}>
+          <img
+            src={item?.img || item?.photoLink}
+            alt={item?.title}
+            width={461}
+            height={248}
+          />
+        </form>
+      )}
     </StyledListItem>
   );
 };
