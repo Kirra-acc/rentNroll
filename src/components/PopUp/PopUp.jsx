@@ -88,10 +88,10 @@ const PopUp = ({ item }) => {
                 <li key={condition}>{condition}</li>
               ))}
               <li>
-                Mileage: <span>{item?.mileage}</span>
+                Mileage: <span>&nbsp;{Number(item?.mileage).toLocaleString()}</span>
               </li>
               <li>
-                Price: <span>{item?.rentalPrice}</span>
+                Price: <span>&nbsp;{`${item?.rentalPrice.replace('$', '')}$`}</span>
               </li>
             </ul>
           </StyledConditionsWrapper>
