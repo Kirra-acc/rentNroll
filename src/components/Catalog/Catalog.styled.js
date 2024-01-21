@@ -33,7 +33,7 @@ export const StyledInfo = styled.div`
   justify-content: space-between;
   width: 100%;
   margin-bottom: 8px;
-  h2 {
+  h1 {
     font-family: "Manrope Medium";
     font-size: 16px;
     line-height: 1.5;
@@ -55,108 +55,105 @@ export const StyledDesc = styled.div`
 `;
 
 export const StyledItemBtn = styled.button`
-display: flex;
-width: 274px;
-height: 44px;
-padding: 12px 99px;
-justify-content: center;
-align-items: center;
-border-radius: 12px;
-background-color: var(--button);
-border: none;
-outline: transparent;
+  display: flex;
+  width: 274px;
+  height: 44px;
+  padding: 12px 99px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background-color: var(--button);
+  border: none;
+  outline: transparent;
 
-font-family: "Manrope SemiBold";
-font-size: 14px;
-line-height: 1.43;
-color: var(--white);
-&:hover,
-&:focus {
+  font-family: "Manrope SemiBold";
+  font-size: 14px;
+  line-height: 1.43;
+  color: var(--white);
+  &:hover,
+  &:focus {
     background-color: var(--button-active);
   }
-`
+`;
 
 export const StyledFavBtn = styled.button`
-position: absolute;
-top: 14px;
-right: 14px;
-outline: transparent;
-border: none;
-background-color: transparent;
-fill: transparent;
-&:hover svg{
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  outline: transparent;
+  border: none;
+  background-color: transparent;
+  fill: transparent;
+  &:hover svg {
     fill: var(--button-active);
     /* stroke: var(--button-active); */
   }
-`
+`;
 
 export const selectStyle = {
-    control: styles => ({
-      ...styles,
-      backgroundColor: 'var(--accent-filter)',
-      width: '224px',
-      height: '48px',
-      border: 'none',
-      paddingLeft: '18px',
-      paddingRight: '18px',
-      paddingTop: '14px',
-      paddingBottom: '14px',
-      display: 'flex',
-      cursor: 'pointer',
+  control: (styles) => ({
+    ...styles,
+    backgroundColor: "var(--accent-filter)",
+    width: "224px",
+    height: "48px",
+    border: "none",
+    paddingLeft: "18px",
+    paddingRight: "18px",
+    paddingTop: "14px",
+    paddingBottom: "14px",
+    display: "flex",
+    cursor: "pointer",
     //   padding: '14px 89px 14px 18px',
     //   gap: '32px',
-      outline: 'none',
-      borderRadius: '14px',
-      boxShadow: 'none',
-    }),
-    singleValue: styles => ({
-      ...styles,
-      fontFamily: "Manrope Medium",
-      color: 'var(--descr-text)',
-      fontSize: '18px',
-    }),
-    placeholder: styles => ({
-      ...styles,
-      fontFamily: "Manrope Medium",
-      color: 'var(--descr-text)',
-      fontSize: '18px',
-    }),
-    menu: styles => ({
-      ...styles,
-      borderRadius: '14px',
-      backgroundColor: 'var(--white)',
-    //   boxShadow: '0px 4px 60px 0px var(--modal-shadow)',
-    //   backdropFilter: 'blur(50px)',
-      overflow: 'hidden',
-      color: 'var(--filter-dropdown-text)',
-      fontFamily: "Manrope Medium",
-      fontSize: '16px',
-  
-      '&::before': {
-        background: 'var(--white)',
-        content: '""',
-        filter: 'blur(50px)',
-        position: 'absolute',
-        inset: '0%',
-        zIndex: '-1',
-      },
-    }),
-    option: (styles, { isFocused, isSelected }) => {
-      if (isFocused) {
-        return {
-          ...styles,
-        //   background: 'var(--modal-dropdown-activebg)',
-          color: 'var(--descr-text)',
-        };
-      } else if (isSelected) {
-        return {
-          ...styles,
-          color: 'var(--descr-text)',
-        };
-      } else {
-        return {
-          ...styles,
-        };
-      }
+    outline: "none",
+    borderRadius: "14px",
+    boxShadow: "none",
+  }),
+  singleValue: (styles) => ({
+    ...styles,
+    fontFamily: "Manrope Medium",
+    color: "var(--descr-text)",
+    fontSize: "18px",
+  }),
+  placeholder: (styles) => ({
+    ...styles,
+    fontFamily: "Manrope Medium",
+    color: "var(--descr-text)",
+    fontSize: "18px",
+  }),
+  menu: (styles) => ({
+    ...styles,
+    borderRadius: "14px",
+    backgroundColor: "var(--white)",
+    overflow: "hidden",
+    color: "var(--filter-dropdown-text)",
+    fontFamily: "Manrope Medium",
+    fontSize: "16px",
+
+    "&::before": {
+      background: "var(--white)",
+      content: '""',
+      filter: "blur(50px)",
+      position: "absolute",
+      inset: "0%",
+      zIndex: "-1",
     },
-  };
+  }),
+  option: (styles, { isFocused, isSelected }) => {
+    if (isFocused) {
+      return {
+        ...styles,
+        color: "var(--descr-text)",
+      };
+    } else if (isSelected) {
+      return {
+        ...styles,
+        color: "var(--descr-text)",
+      };
+    } else {
+      return {
+        ...styles,
+      };
+    }
+  },
+};
