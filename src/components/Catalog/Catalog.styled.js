@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const StyledContainer = styled.div`
   width: 1200px;
   margin: 0 auto;
   padding-left: 8px;
   padding-right: 8px;
 `;
-export const CatalogList = styled.ul`
+export const StyledList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 28px;
@@ -15,18 +15,19 @@ export const CatalogList = styled.ul`
   height: 426px;
 `;
 
-export const CatalogListItem = styled.li`
+export const StyledListItem = styled.li`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 274px;
+  position: relative;
   img {
     margin-bottom: 8px;
     border-radius: 14px;
   }
 `;
 
-export const TextWrapper = styled.div`
+export const StyledInfo = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -43,7 +44,7 @@ export const TextWrapper = styled.div`
   }
 `;
 
-export const Characteristics = styled.div`
+export const StyledDesc = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
@@ -53,7 +54,7 @@ export const Characteristics = styled.div`
   margin-bottom: 28px;
 `;
 
-export const ItemButton = styled.button`
+export const StyledItemBtn = styled.button`
 display: flex;
 width: 274px;
 height: 44px;
@@ -74,3 +75,88 @@ color: var(--white);
     background-color: var(--button-active);
   }
 `
+
+export const StyledFavBtn = styled.button`
+position: absolute;
+top: 14px;
+right: 14px;
+outline: transparent;
+border: none;
+background-color: transparent;
+fill: transparent;
+&:hover svg{
+    fill: var(--button-active);
+    /* stroke: var(--button-active); */
+  }
+`
+
+export const selectStyle = {
+    control: styles => ({
+      ...styles,
+      backgroundColor: 'var(--accent-filter)',
+      width: '224px',
+      height: '48px',
+      border: 'none',
+      paddingLeft: '18px',
+      paddingRight: '18px',
+      paddingTop: '14px',
+      paddingBottom: '14px',
+      display: 'flex',
+      cursor: 'pointer',
+    //   padding: '14px 89px 14px 18px',
+    //   gap: '32px',
+      outline: 'none',
+      borderRadius: '14px',
+      boxShadow: 'none',
+    }),
+    singleValue: styles => ({
+      ...styles,
+      fontFamily: "Manrope Medium",
+      color: 'var(--descr-text)',
+      fontSize: '18px',
+    }),
+    placeholder: styles => ({
+      ...styles,
+      fontFamily: "Manrope Medium",
+      color: 'var(--descr-text)',
+      fontSize: '18px',
+    }),
+    menu: styles => ({
+      ...styles,
+      borderRadius: '14px',
+      backgroundColor: 'var(--white)',
+    //   boxShadow: '0px 4px 60px 0px var(--modal-shadow)',
+    //   backdropFilter: 'blur(50px)',
+      overflow: 'hidden',
+      color: 'var(--filter-dropdown-text)',
+      fontFamily: "Manrope Medium",
+      fontSize: '16px',
+  
+      '&::before': {
+        background: 'var(--white)',
+        content: '""',
+        filter: 'blur(50px)',
+        position: 'absolute',
+        inset: '0%',
+        zIndex: '-1',
+      },
+    }),
+    option: (styles, { isFocused, isSelected }) => {
+      if (isFocused) {
+        return {
+          ...styles,
+        //   background: 'var(--modal-dropdown-activebg)',
+          color: 'var(--descr-text)',
+        };
+      } else if (isSelected) {
+        return {
+          ...styles,
+          color: 'var(--descr-text)',
+        };
+      } else {
+        return {
+          ...styles,
+        };
+      }
+    },
+  };

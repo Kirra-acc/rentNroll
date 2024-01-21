@@ -1,27 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
+// import { toast } from "react-toastify";
 import { fetchCarsGalleryThunk } from "./operations.js";
-
-const initialState = {
-  carItems: {
-    items: [],
-    loading: false,
-  },
-};
 
 export const slice = createSlice({
   name: "cars",
-  initialState,
-  //   reducers: {
-  //     setFilter: (state, { payload }) => {
-  //       state.filter = payload;
-  //     },
-  //   },
+  initialState: {
+    items: [],
+    loading: false,
+    select: '',
+    categories: [],
+  },
+
+  reducers: {
+    changeSelectFilter: (state, { payload }) => {
+      state.select = payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchCarsGalleryThunk.fulfilled, (state, { payload }) => {
-      state.carItems.items = payload;
-      state.carItems.loading = false;
+      state.items = payload;
+      state.loading = false;
     });
   },
 });
 
 export default slice.reducer;
+export const { changeSelectFilter } = slice.actions;
