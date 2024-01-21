@@ -85,13 +85,30 @@ const PopUp = ({ item }) => {
             <h3>Rental Conditions:</h3>
             <ul>
               {item?.rentalConditions.split("\n").map((condition) => (
-                <li key={condition}>{condition}</li>
+                <li key={condition}>
+                  {condition.includes("Minimum age:")
+                    ? condition.split(" ").map((word, wordIndex) => (
+                        <span
+                          key={wordIndex}
+                          style={
+                            word === "Minimum" || word === "age:"
+                              ? { color: "var(--modal-accent-text)" }
+                              : { color: "var(--button)" }
+                          }
+                        >
+                          {word}&nbsp;
+                        </span>
+                      ))
+                    : condition}
+                </li>
               ))}
               <li>
-                Mileage: <span>&nbsp;{Number(item?.mileage).toLocaleString()}</span>
+                Mileage:{" "}
+                <span>&nbsp;{Number(item?.mileage).toLocaleString()}</span>
               </li>
               <li>
-                Price: <span>&nbsp;{`${item?.rentalPrice.replace('$', '')}$`}</span>
+                Price:{" "}
+                <span>&nbsp;{`${item?.rentalPrice.replace("$", "")}$`}</span>
               </li>
             </ul>
           </StyledConditionsWrapper>

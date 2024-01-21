@@ -102,6 +102,7 @@ export const StyledConditionsWrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
+  width: 461px;
   margin-bottom: 24px;
 
   h3 {
@@ -114,6 +115,7 @@ export const StyledConditionsWrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+    width: 420px;
   }
   li {
     display: flex;
@@ -122,30 +124,38 @@ export const StyledConditionsWrapper = styled.div`
     align-items: center;
     border-radius: 35px;
     background: var(--modal-accent-bg);
-    span{
-        color: var(--button);
+    color: var(--modal-accent-text);
+    font-family: "Manrope Regular";
+    font-size: 12px;
+    line-height: 1.5;
+
+    span {
+      color: var(--button);
+      font-family: "Montserrat Regular";
+      font-size: 12px;
+      line-height: 1.5;
     }
   }
 `;
 
 export const StyledModalBtn = styled.button`
-display: flex;
-justify-content: center;
-align-items: center;
-width: 168px;
-height: 44px;
-padding: 12px 50px;
-border-radius: 12px;
-background-color: var(--button);
-border: none;
-outline: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 168px;
+  height: 44px;
+  padding: 12px 50px;
+  border-radius: 12px;
+  background-color: var(--button);
+  border: none;
+  outline: transparent;
 
-font-family: "Manrope SemiBold";
-font-size: 14px;
-line-height: 1.43;
-color: var(--white);
-&:hover,
-&:focus {
+  font-family: "Manrope SemiBold";
+  font-size: 14px;
+  line-height: 1.43;
+  color: var(--white);
+  &:hover,
+  &:focus {
     background-color: var(--button-active);
   }
-`
+`;
