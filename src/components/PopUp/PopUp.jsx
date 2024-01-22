@@ -12,13 +12,8 @@ import {
 } from "./PopUp.styled";
 import { RxCross2 } from "react-icons/rx";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addHomeItems,
-  changeModalClose,
-  changeSelectedItem,
-} from "../../redux/slice";
+import { changeModalClose } from "../../redux/slice";
 import { modalIsOpen } from "../../redux/selectors";
-import CustomButton from "../CustomButton/CustomButton";
 
 const PopUp = ({ item }) => {
   const dispatch = useDispatch();
@@ -49,8 +44,6 @@ const PopUp = ({ item }) => {
 
   const handleRentalClick = () => {
     dispatch(changeModalClose(false));
-    dispatch(changeSelectedItem(item));
-    dispatch(addHomeItems(item));
   };
 
   return (
@@ -123,11 +116,9 @@ const PopUp = ({ item }) => {
               </li>
             </ul>
           </StyledConditionsWrapper>
-          <CustomButton
-            title="Rental car"
-            type="button"
-            onClick={handleRentalClick}
-          />
+          <StyledModalBtn type="button" onClick={handleRentalClick}>
+            Rental car
+          </StyledModalBtn>
         </StyledTextWrapper>
       </StyledModalForm>
     </StyledModalBackdrop>

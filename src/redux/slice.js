@@ -3,16 +3,15 @@ import { fetchCarsGalleryThunk } from "./operations.js";
 import { toast } from "react-toastify";
 
 export const slice = createSlice({
-  name: "cars",
+  name: "catalog",
   initialState: {
     items: [],
     modalIsOpen: false,
     loading: false,
     select: "",
+    filters: {},
     categories: [],
     selectedItemId: "",
-    selectedItem: null,
-    homeItems: [],
   },
 
   reducers: {
@@ -28,28 +27,37 @@ export const slice = createSlice({
     changeSelectedItemId: (state, { payload }) => {
       state.selectedItemId = payload;
     },
-    changeSelectedItem: (state, action) => {
-      state.selectedItem = action.payload;
-    },
-    addHomeItems: (state, action) => {
-      state.homeItems.push(action.payload);
-      toast.success('Car was rented successfully! Please go to Home page to view your selected cars!');
+    changeFilters: (state, { payload }) => {
+      state.filters = payload;
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchCarsGalleryThunk.fulfilled, (state, { payload }) => {
-      state.items = [...state.items, ...payload];
-      state.loading = false;
-    });
+    builder
+      .addCase(fetchCarsGalleryThunk.fulfilled, (state, { payload }) => {
+        state.items = [...state.items, ...payload];
+        state.loading = false;
+      })
+      .addCase(fetchCarsGalleryThunk.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchCarsGalleryThunk.rejected, (state, { payload }) => {
+        state.loading = false;
+        toast.error(`Failed to browse cars catalog: ${payload}`);
+      })
+      // .addCase(fetchGalleryFiltersThunk.fulfilled, (state, {payload}) => {
+      //   state.items = payload;
+      //   state.loading = false;
+      // });
   },
 });
 
-export default slice.reducer;
+export const sliceReducer = slice.reducer;
 export const {
   changeSelectFilter,
   changeModalOpen,
   changeModalClose,
   changeSelectedItemId,
   changeSelectedItem,
-  addHomeItems
+  addHomeItems,
+  changeFilters,
 } = slice.actions;
