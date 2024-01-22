@@ -12,7 +12,7 @@ export const StyledList = styled.ul`
   gap: 28px;
 
   width: 1184px;
-  height: 426px;
+  /* height: 426px; */
 `;
 
 export const StyledListItem = styled.li`
@@ -157,3 +157,27 @@ export const selectStyle = {
     }
   },
 };
+
+export const StyledMoreWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+`;
+
+export const StyledMoreBtn = styled.button`
+  color: var(--button);
+  font-family: "Manrope Medium";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-decoration-line: underline;
+  margin: 0 auto;
+  background: transparent;
+  border: none;
+
+  &:hover,
+  &:focus {
+    color: var(--button-active);
+  }
+`;

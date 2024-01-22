@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { useEffect } from "react";
 import { fetchCarsGalleryThunk } from "../../redux/operations";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCars } from "../../redux/selectors";
 import CatalogItem from "./CatalogItem.jsx";
-import { StyledList, StyledContainer, selectStyle } from "./Catalog.styled.js";
+import {
+  StyledList,
+  StyledContainer,
+  selectStyle,
+  StyledMoreBtn,
+  StyledMoreWrapper,
+} from "./Catalog.styled.js";
 import Select, { components } from "react-select";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { changeSelectFilter } from "../../redux/slice.js";
 
 const Catalog = () => {
+  const [page, setPage] = useState(1);
   const dispatch = useDispatch();
   const gallery = useSelector(selectCars);
 
@@ -19,8 +26,14 @@ const Catalog = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchCarsGalleryThunk());
+    dispatch(fetchCarsGalleryThunk(page));
+    setPage(page + 1);
   }, [dispatch]);
+
+  const handleLoadMoreClick = () => {
+    setPage(page + 1);
+    dispatch(fetchCarsGalleryThunk(page));
+  };
 
   const uniqueOptions = [...new Set(gallery?.map((item) => item?.make))];
   const arrOfOptions = uniqueOptions.sort();
@@ -86,6 +99,11 @@ const Catalog = () => {
           <CatalogItem key={item?.id} item={item} />
         ))}
       </StyledList>
+
+      <StyledMoreWrapper>
+        <StyledMoreBtn type="button" onClick={handleLoadMoreClick}>Load more</StyledMoreBtn>
+      </StyledMoreWrapper>
+
     </StyledContainer>
   );
 };

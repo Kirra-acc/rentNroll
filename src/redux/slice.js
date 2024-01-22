@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import { toast } from "react-toastify";
 import { fetchCarsGalleryThunk } from "./operations.js";
 import { toast } from "react-toastify";
 
@@ -39,7 +38,7 @@ export const slice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchCarsGalleryThunk.fulfilled, (state, { payload }) => {
-      state.items = payload;
+      state.items = [...state.items, ...payload];
       state.loading = false;
     });
   },
