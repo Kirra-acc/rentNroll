@@ -20,6 +20,7 @@ export const StyledModalForm = styled.form`
   background-color: var(--white);
   border-radius: 24px;
   position: relative;
+  z-index: -2;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,7 +1,7 @@
 :root {
   --white: #fff;
   --accent-filter: #f7f7fb;
-  --modal-img-bg: #F3F3F2;
+  --modal-img-bg: #f3f3f2;
 
   --accent-filter-text: #8a8a89;
   --filter-dropdown-text: rgba(18, 20, 23, 0.2);
@@ -15,9 +15,10 @@
   --modal-accent-bg: #f9f9f9;
   --modal-accent-text: #363535;
 
-  /* --image-card: linear-gradient(
+  --image-card: linear-gradient(
       180deg,
       rgba(18, 20, 23, 0.5) 2.5%,
       rgba(18, 20, 23, 0) 41.07%
-    ); */
+    ),
+    lightgray 50%;
 }

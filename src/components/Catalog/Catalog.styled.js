@@ -24,8 +24,19 @@ export const StyledListItem = styled.li`
   img {
     margin-bottom: 8px;
     border-radius: 14px;
+    z-index: -1;
   }
 `;
+export const StyledGradient = styled.div`
+position: absolute;
+  content: "";
+  width: 100%;
+  height: 268px;
+  border-radius: 14px;
+  opacity: 0.1;
+  background: var(--image-card);
+
+`
 
 export const StyledInfo = styled.div`
   display: flex;
@@ -103,6 +114,7 @@ export const selectStyle = {
     paddingBottom: "14px",
     display: "flex",
     cursor: "pointer",
+    // zIndex: '6',
     //   padding: '14px 89px 14px 18px',
     //   gap: '32px',
     outline: "none",

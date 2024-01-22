@@ -4,6 +4,7 @@ import {
   StyledDesc,
   StyledInfo,
   StyledFavBtn,
+  StyledGradient,
 } from "./Catalog.styled.js";
 import { FaRegHeart } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,6 +29,7 @@ const CatalogItem = ({ item }) => {
         width={274}
         height={268}
       />
+      <StyledGradient></StyledGradient>
 
       <StyledFavBtn type="button">
         <FaRegHeart
