@@ -46,7 +46,9 @@ export const slice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchCarsGalleryThunk.fulfilled, (state, { payload }) => {
-        if (payload.length === 0) {
+        if (payload.length < 12) {
+          state.items = [...state.items, ...payload];
+          state.loading = false;
           state.isLoadMore = false;
         } else {
           state.items = [...state.items, ...payload];
