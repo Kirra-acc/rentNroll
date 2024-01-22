@@ -43,7 +43,7 @@ export const StyledInfo = styled.div`
   justify-content: space-between;
   width: 100%;
   margin-bottom: 8px;
-  h1 {
+  h2 {
     font-family: "Manrope Medium";
     font-size: 16px;
     line-height: 1.5;

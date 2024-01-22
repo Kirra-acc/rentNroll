@@ -50,13 +50,13 @@ const CatalogItem = ({ item }) => {
       </StyledFavBtn>
 
       <StyledInfo>
-        <h1>
+        <h2>
           {item?.make}
           {(item?.model === "Enclave" ||
             item?.model === "XC90" ||
             item?.model === "XC60") && <span> {item?.model}</span>}
           , {item?.year}
-        </h1>
+        </h2>
         <p>{item?.rentalPrice}</p>
       </StyledInfo>
 

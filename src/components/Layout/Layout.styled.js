@@ -4,7 +4,13 @@ export const StyledHeader = styled.header`
   display: flex;
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: var(--button);
+  background-color: var(--white);
+  border-bottom: 7px solid var(--home-blue);
+  font-family: "Manrope Medium";
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 1.33;
   margin-bottom: 30px;
   div {
     display: flex;
@@ -19,5 +25,16 @@ export const StyledHeader = styled.header`
     display: flex;
     justify-content: space-around;
     width: 90%;
+    a {
+      font-weight: 700px;
+      color: var(--home-blue);
+      &:hover,
+      &:focus {
+        color: var(--button-active);
+        text-decoration: underline;
+
+        transition: all 0.4s ease-in-out;
+      }
+    }
   }
 `;

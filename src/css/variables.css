@@ -21,4 +21,7 @@
       rgba(18, 20, 23, 0) 41.07%
     ),
     lightgray 50%;
+
+  --home-accent: #ff5f00;
+  --home-blue: #678add;
 }
