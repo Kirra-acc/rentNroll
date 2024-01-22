@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { fetchCarsGalleryThunk } from "../../redux/operations";
 import { useDispatch, useSelector } from "react-redux";
-import { selectedFilters, selectCars } from "../../redux/selectors";
+import { selectCars, isFirstRender } from "../../redux/selectors";
 import CatalogItem from "./CatalogItem.jsx";
 import {
   StyledList,
@@ -14,31 +14,38 @@ import {
 } from "./Catalog.styled.js";
 import Select, { components } from "react-select";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import { changeFilters, changeSelectFilter } from "../../redux/slice.js";
+import {
+  changeFilters,
+  changeRender,
+  changeSelectFilter,
+} from "../../redux/slice.js";
 
 const Catalog = () => {
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
   const gallery = useSelector(selectCars);
-  // const [filters, setFilters] = useState({});
-  const filters = useSelector(selectedFilters);
+  const firstRender = useSelector(isFirstRender);
+
+  const [makeFilter, setMakeFilter] = useState("");
+  const [rentalPriceFilter, setRentalPriceFilter] = useState(null);
+  const [fromMileageFilter, setFromMileageFilter] = useState(null);
+  const [toMileageFilter, setToMileageFilter] = useState(null);
 
   const getSelectValue = (selectedOp) => {
     dispatch(changeSelectFilter(selectedOp?.value));
   };
 
   useEffect(() => {
-    dispatch(fetchCarsGalleryThunk(page));
-    setPage(page + 1);
-  }, [dispatch]);
-
-  // useEffect(() => {
-  //   dispatch(fetchCarsGalleryThunk({ page: 1, filters }));
-  // }, [filters, dispatch, page]);
+    if (firstRender) {
+      dispatch(fetchCarsGalleryThunk(page));
+      setPage(page + 1);
+      dispatch(changeRender(false));
+    }
+  }, [dispatch, page, firstRender]);
 
   const handleLoadMoreClick = () => {
     setPage(page + 1);
-    dispatch(fetchCarsGalleryThunk( page ));
+    dispatch(fetchCarsGalleryThunk(page));
   };
 
   const uniqueOptions = [...new Set(gallery?.map((item) => item?.make))];
@@ -70,36 +77,49 @@ const Catalog = () => {
   const filterSearch = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    formData.forEach((value, key) => {
-      console.log(`${key}: ${value}`);
-    });
 
     const makeValue = formData.get("make");
     const rentalPriceValue = formData.get("rentalPrice");
     const fromMileageValue = formData.get("from");
     const toMileageValue = formData.get("to");
-    
-    console.log("makeValue:", makeValue);
-    console.log("rentalPriceValue:", rentalPriceValue);
-    console.log("fromMileageValue:", fromMileageValue);
-    console.log("toMileageValue:", toMileageValue);
 
-    const newFilters = {
-      make: makeValue,
-      rentalPrice: rentalPriceValue,
-      fromMileage: fromMileageValue,
-      toMileage: toMileageValue,
-    };
-    dispatch(changeFilters(newFilters));
-    setPage(1);
-    // dispatch(fetchCarsGalleryThunk({ page: 1, filters: newFilters }));
+    setMakeFilter(makeValue || "");
+    setRentalPriceFilter(Number(rentalPriceValue));
+    setFromMileageFilter(Number(fromMileageValue));
+    setToMileageFilter(Number(toMileageValue));
+
+    // console.log("makeValue:", makeValue);
+    // console.log("rentalPriceValue:", rentalPriceValue);
+    // console.log("fromMileageValue:", fromMileageValue);
+    // console.log("toMileageValue:", toMileageValue);
+
+    dispatch(
+      changeFilters({
+        makeValue,
+        rentalPriceValue,
+        fromMileageValue,
+        toMileageValue,
+      })
+    );
   };
+
+  const filteredGallery = gallery
+    .filter((item) => (makeFilter ? item.make === makeFilter : true))
+    .filter((item) =>
+      rentalPriceFilter ? item.rentalPrice === rentalPriceFilter : true
+    )
+    .filter((item) =>
+      fromMileageFilter ? item.mileage >= fromMileageFilter : true
+    )
+    .filter((item) =>
+      toMileageFilter ? item.mileage <= toMileageFilter : true
+    );
 
   return (
     <StyledContainer>
       <form onSubmit={filterSearch}>
         <div>
-          <label>Car brand</label>
+          <label htmlFor="make">Car brand</label>
           <Select
             // required
             name="make"
@@ -112,7 +132,7 @@ const Catalog = () => {
               IndicatorSeparator: () => null,
             }}
           />
-          <label>Price/ 1 hour</label>
+          <label htmlFor="rentalPrice">Price/ 1 hour</label>
           <Select
             // required
             options={arrOfPrices.map((price) => ({
@@ -136,7 +156,7 @@ const Catalog = () => {
       </form>
 
       <StyledList>
-        {gallery?.map((item) => (
+        {filteredGallery?.map((item) => (
           <CatalogItem key={item?.id} item={item} />
         ))}
       </StyledList>

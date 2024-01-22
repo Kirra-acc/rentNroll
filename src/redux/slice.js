@@ -12,6 +12,7 @@ export const slice = createSlice({
     filters: {},
     categories: [],
     selectedItemId: "",
+    firstRender: true,
   },
 
   reducers: {
@@ -30,6 +31,9 @@ export const slice = createSlice({
     changeFilters: (state, { payload }) => {
       state.filters = payload;
     },
+    changeRender: (state, { payload }) => {
+      state.firstRender = payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -43,11 +47,11 @@ export const slice = createSlice({
       .addCase(fetchCarsGalleryThunk.rejected, (state, { payload }) => {
         state.loading = false;
         toast.error(`Failed to browse cars catalog: ${payload}`);
-      })
-      // .addCase(fetchGalleryFiltersThunk.fulfilled, (state, {payload}) => {
-      //   state.items = payload;
-      //   state.loading = false;
-      // });
+      });
+    // .addCase(fetchGalleryFiltersThunk.fulfilled, (state, {payload}) => {
+    //   state.items = payload;
+    //   state.loading = false;
+    // });
   },
 });
 
@@ -60,4 +64,5 @@ export const {
   changeSelectedItem,
   addHomeItems,
   changeFilters,
+  changeRender,
 } = slice.actions;
