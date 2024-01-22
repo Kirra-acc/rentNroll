@@ -2,15 +2,15 @@ import React from "react";
 import {
   StyledListItem,
   StyledDesc,
-  StyledItemBtn,
   StyledInfo,
   StyledFavBtn,
 } from "./Catalog.styled.js";
 import { FaRegHeart } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { changeModalOpen, changeSelectedItemId } from "../../redux/slice.js";
 import { modalIsOpen, selectedItemId } from "../../redux/selectors.js";
 import PopUp from "../PopUp/PopUp.jsx";
+import CustomButton from "../CustomButton/CustomButton.jsx";
+import { changeModalOpen, changeSelectedItemId } from "../../redux/slice.js";
 
 const CatalogItem = ({ item }) => {
   const dispatch = useDispatch();
@@ -58,15 +58,10 @@ const CatalogItem = ({ item }) => {
         <p>{item?.accessories[1]}</p>
       </StyledDesc>
 
-      <StyledItemBtn
-        type="button"
-        onClick={() => {
-          dispatch(changeSelectedItemId(item?.id));
-          dispatch(changeModalOpen(true));
-        }}
-      >
-        Learn more
-      </StyledItemBtn>
+      <CustomButton title="Learn more" onClick={() => {
+        dispatch(changeSelectedItemId(item?.id));
+        dispatch(changeModalOpen(true));
+      }}/>
 
       {isModalOpen && selectedId === item?.id && <PopUp item={item} />}
     </StyledListItem>

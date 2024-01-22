@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 // import { toast } from "react-toastify";
 import { fetchCarsGalleryThunk } from "./operations.js";
+import { toast } from "react-toastify";
 
 export const slice = createSlice({
   name: "cars",
@@ -11,6 +12,8 @@ export const slice = createSlice({
     select: "",
     categories: [],
     selectedItemId: "",
+    selectedItem: null,
+    homeItems: [],
   },
 
   reducers: {
@@ -26,6 +29,13 @@ export const slice = createSlice({
     changeSelectedItemId: (state, { payload }) => {
       state.selectedItemId = payload;
     },
+    changeSelectedItem: (state, action) => {
+      state.selectedItem = action.payload;
+    },
+    addHomeItems: (state, action) => {
+      state.homeItems.push(action.payload);
+      toast.success('Car was rented successfully! Please go to Home page to view your selected cars!');
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchCarsGalleryThunk.fulfilled, (state, { payload }) => {
@@ -36,5 +46,11 @@ export const slice = createSlice({
 });
 
 export default slice.reducer;
-export const { changeSelectFilter, changeModalOpen, changeModalClose, changeSelectedItemId } =
-  slice.actions;
+export const {
+  changeSelectFilter,
+  changeModalOpen,
+  changeModalClose,
+  changeSelectedItemId,
+  changeSelectedItem,
+  addHomeItems
+} = slice.actions;
