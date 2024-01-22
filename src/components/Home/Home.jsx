@@ -10,7 +10,7 @@ const Home = () => {
     <StyledContainer>
       <StyledHomeSection>
         <StyledFrontDesc>
-          <span>Link</span>
+          <a href="https://github.com/Kirra-acc/rentNroll">Details for you</a>
           <h1>premium car rentals</h1>
           <p>Rent the desired car model and discover the true essence of a premium car rental experience</p>
           <NavLink to={"/catalog"}>

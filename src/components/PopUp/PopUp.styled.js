@@ -139,7 +139,7 @@ export const StyledConditionsWrapper = styled.div`
   }
 `;
 
-export const StyledModalBtn = styled.button`
+export const StyledModalBtn = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;

@@ -14,6 +14,7 @@ export const slice = createSlice({
     categories: [],
     selectedItemId: "",
     firstRender: true,
+    isLoadMore: true,
   },
 
   reducers: {
@@ -45,8 +46,12 @@ export const slice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchCarsGalleryThunk.fulfilled, (state, { payload }) => {
-        state.items = [...state.items, ...payload];
-        state.loading = false;
+        if (payload.length === 0) {
+          state.isLoadMore = false;
+        } else {
+          state.items = [...state.items, ...payload];
+          state.loading = false;
+        }
       })
       .addCase(fetchCarsGalleryThunk.pending, (state) => {
         state.loading = true;
@@ -55,10 +60,6 @@ export const slice = createSlice({
         state.loading = false;
         toast.error(`Failed to browse cars catalog: ${payload}`);
       });
-    // .addCase(fetchGalleryFiltersThunk.fulfilled, (state, {payload}) => {
-    //   state.items = payload;
-    //   state.loading = false;
-    // });
   },
 });
 

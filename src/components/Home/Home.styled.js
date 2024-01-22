@@ -9,12 +9,17 @@ export const StyledFrontDesc = styled.div`
   display: flex;
   flex-direction: column;
 
-  span {
+  a {
     color: var(--home-accent);
     font-family: "Manrope Regular";
     font-size: 24px;
     line-height: 1.5;
     margin-bottom: 18px;
+    cursor: pointer;
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
   }
   h1 {
     color: var(--home-blue);
@@ -33,21 +38,33 @@ export const StyledFrontDesc = styled.div`
     margin-bottom: 70px;
   }
   button {
+    position: relative;
     border: none;
     outline: transparent;
     background: var(--home-blue);
     border-radius: 6px;
-    padding: 10px 23px;
+    padding: 10px 43px 10px 23px;
     color: var(--white);
     font-family: "Manrope Medium";
     font-size: 18px;
     line-height: 1.33;
     height: 60px;
     text-transform: uppercase;
+
     &:hover,
-  &:focus {
-    background-color: var(--button);
-  }
+    &:focus {
+      background-color: var(--button);
+    }
+    &:hover svg {
+      right: 7px;
+    }
+    svg {
+      transition: all 0.5s linear;
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 `;
 

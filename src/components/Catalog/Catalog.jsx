@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { fetchCarsGalleryThunk } from "../../redux/operations";
 import { useDispatch, useSelector } from "react-redux";
-import { selectCars, isFirstRender } from "../../redux/selectors";
+import { selectCars, isFirstRender, loadMore } from "../../redux/selectors";
 import CatalogItem from "./CatalogItem.jsx";
 import {
   StyledList,
@@ -30,6 +30,7 @@ const Catalog = () => {
   const dispatch = useDispatch();
   const gallery = useSelector(selectCars);
   const firstRender = useSelector(isFirstRender);
+  const hasLoadMore = useSelector(loadMore);
 
   const [makeFilter, setMakeFilter] = useState("");
   const [rentalPriceFilter, setRentalPriceFilter] = useState(null);
@@ -49,8 +50,10 @@ const Catalog = () => {
   }, [dispatch, page, firstRender]);
 
   const handleLoadMoreClick = () => {
-    setPage(page + 1);
-    dispatch(fetchCarsGalleryThunk(page));
+    if (hasLoadMore) {
+      setPage(page + 1);
+      dispatch(fetchCarsGalleryThunk(page));
+    }
   };
 
   const uniqueOptions = [...new Set(gallery?.map((item) => item?.make))];
@@ -165,11 +168,9 @@ const Catalog = () => {
             <StyledInputFrom type="number" placeholder="From" name="from" />
             <StyledInputTo type="number" placeholder="To" name="to" />
 
-        <button type="submit">Search</button>
+            <button type="submit">Search</button>
           </StyledInputFilter>
-
         </StyledSelectFilter>
-
       </StyledFiltersForm>
 
       <StyledList>
@@ -179,9 +180,15 @@ const Catalog = () => {
       </StyledList>
 
       <StyledMoreWrapper>
-        <StyledMoreBtn type="button" onClick={handleLoadMoreClick}>
+        {hasLoadMore && (
+          <StyledMoreBtn
+          type="button"
+          onClick={handleLoadMoreClick}
+        >
           Load more
         </StyledMoreBtn>
+        )}
+        
       </StyledMoreWrapper>
     </StyledContainer>
   );

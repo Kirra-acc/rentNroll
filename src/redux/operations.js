@@ -19,16 +19,3 @@ export const fetchCarsGalleryThunk = createAsyncThunk(
     }
   }
 );
-
-// export const fetchGalleryFiltersThunk = createAsyncThunk(
-//   "fetchCars",
-//   async (_, thunkAPI) => {
-//     try {
-//       const { data } = await axios.get(`cars`);
-//       console.log(data);
-//       return data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );

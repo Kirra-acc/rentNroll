@@ -116,7 +116,7 @@ const PopUp = ({ item }) => {
               </li>
             </ul>
           </StyledConditionsWrapper>
-          <StyledModalBtn type="button" onClick={handleRentalClick}>
+          <StyledModalBtn href="tel:+380730000000" onClick={handleRentalClick}>
             Rental car
           </StyledModalBtn>
         </StyledTextWrapper>
