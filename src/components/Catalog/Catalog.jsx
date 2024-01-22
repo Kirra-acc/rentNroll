@@ -11,6 +11,11 @@ import {
   selectStyle,
   StyledMoreBtn,
   StyledMoreWrapper,
+  StyledFiltersForm,
+  StyledSelectFilter,
+  StyledInputFilter,
+  StyledInputTo,
+  StyledInputFrom,
 } from "./Catalog.styled.js";
 import Select, { components } from "react-select";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
@@ -117,8 +122,8 @@ const Catalog = () => {
 
   return (
     <StyledContainer>
-      <form onSubmit={filterSearch}>
-        <div>
+      <StyledFiltersForm onSubmit={filterSearch}>
+        <StyledSelectFilter>
           <label htmlFor="make">Car brand</label>
           <Select
             // required
@@ -132,6 +137,9 @@ const Catalog = () => {
               IndicatorSeparator: () => null,
             }}
           />
+        </StyledSelectFilter>
+
+        <StyledSelectFilter>
           <label htmlFor="rentalPrice">Price/ 1 hour</label>
           <Select
             // required
@@ -148,12 +156,21 @@ const Catalog = () => {
               IndicatorSeparator: () => null,
             }}
           />
+        </StyledSelectFilter>
+
+        <StyledSelectFilter>
           <label>Сar mileage / km</label>
-          <input type="number" placeholder="From" name="from" />
-          <input type="number" placeholder="To" name="to" />
-          <button type="submit">Search</button>
-        </div>
-      </form>
+
+          <StyledInputFilter>
+            <StyledInputFrom type="number" placeholder="From" name="from" />
+            <StyledInputTo type="number" placeholder="To" name="to" />
+
+        <button type="submit">Search</button>
+          </StyledInputFilter>
+
+        </StyledSelectFilter>
+
+      </StyledFiltersForm>
 
       <StyledList>
         {filteredGallery?.map((item) => (

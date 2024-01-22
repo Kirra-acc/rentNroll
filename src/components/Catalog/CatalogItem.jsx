@@ -63,12 +63,12 @@ const CatalogItem = ({ item }) => {
       <StyledDesc>
         <p>{city} |</p>
         <p>{country} |</p>
-        <p>{item?.rentalCompany}</p>
+        <p>{item?.rentalCompany} |</p>
 
         <p>{item?.type} |</p>
         <p>{item?.model} |</p>
         <p>{item?.id} |</p>
-        <p>{item?.accessories[1]}</p>
+        <p>{item?.accessories[0]}</p>
       </StyledDesc>
 
       <StyledItemBtn onClick={() => {
