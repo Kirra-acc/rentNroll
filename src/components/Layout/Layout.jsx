@@ -9,7 +9,7 @@ const Layout = () => {
       <StyledHeader>
         <StyledContainer>
           <NavLink to={"/"}>
-            <img src={mainLogo} alt="Main-logo" /> 
+            <img src={mainLogo} alt="Main-logo" />
             <p>Rent&Roll</p>
           </NavLink>
 

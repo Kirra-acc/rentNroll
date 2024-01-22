@@ -7,11 +7,20 @@ import {
   StyledGradient,
   StyledItemBtn,
 } from "./Catalog.styled.js";
-import { FaRegHeart } from "react-icons/fa";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { favoriteItems, modalIsOpen, selectedItemId } from "../../redux/selectors.js";
+import {
+  favoriteItems,
+  modalIsOpen,
+  selectedItemId,
+} from "../../redux/selectors.js";
 import PopUp from "../PopUp/PopUp.jsx";
-import { addToFavorites, changeModalOpen, changeSelectedItemId, removeFromFavorites } from "../../redux/slice.js";
+import {
+  addToFavorites,
+  changeModalOpen,
+  changeSelectedItemId,
+  removeFromFavorites,
+} from "../../redux/slice.js";
 
 const CatalogItem = ({ item }) => {
   const dispatch = useDispatch();
@@ -19,7 +28,7 @@ const CatalogItem = ({ item }) => {
   const selectedId = useSelector(selectedItemId);
   const favorites = useSelector(favoriteItems);
 
-  const isFavorite = favorites.some((favorite) => favorite?.id === item?.id);
+  const isFavorite = favorites?.some((favorite) => favorite?.id === item?.id);
 
   const city = item?.address.split(",")[1]?.trim();
   const country = item?.address.split(",")[2]?.trim();
@@ -43,10 +52,9 @@ const CatalogItem = ({ item }) => {
       <StyledGradient></StyledGradient>
 
       <StyledFavBtn type="button" onClick={handleFavoriteClick}>
-        <FaRegHeart
-          style={{ cursor: "pointer", color: "var(--white)" }}
-          size={18}
-        />
+        {(!isFavorite && <FaRegHeart />) || (
+          <FaHeart style={{ fill: "blue" }} />
+        )}
       </StyledFavBtn>
 
       <StyledInfo>
@@ -71,10 +79,14 @@ const CatalogItem = ({ item }) => {
         <p>{item?.accessories[0]}</p>
       </StyledDesc>
 
-      <StyledItemBtn onClick={() => {
-        dispatch(changeModalOpen(true));
-        dispatch(changeSelectedItemId(item?.id));
-      }}>Learn more</StyledItemBtn>
+      <StyledItemBtn
+        onClick={() => {
+          dispatch(changeModalOpen(true));
+          dispatch(changeSelectedItemId(item?.id));
+        }}
+      >
+        Learn more
+      </StyledItemBtn>
 
       {isModalOpen && selectedId === item?.id && <PopUp item={item} />}
     </StyledListItem>

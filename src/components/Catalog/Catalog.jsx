@@ -181,14 +181,10 @@ const Catalog = () => {
 
       <StyledMoreWrapper>
         {hasLoadMore && (
-          <StyledMoreBtn
-          type="button"
-          onClick={handleLoadMoreClick}
-        >
-          Load more
-        </StyledMoreBtn>
+          <StyledMoreBtn type="button" onClick={handleLoadMoreClick}>
+            Load more
+          </StyledMoreBtn>
         )}
-        
       </StyledMoreWrapper>
     </StyledContainer>
   );
