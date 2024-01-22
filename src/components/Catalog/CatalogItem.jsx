@@ -9,17 +9,28 @@ import {
 } from "./Catalog.styled.js";
 import { FaRegHeart } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { modalIsOpen, selectedItemId } from "../../redux/selectors.js";
+import { favoriteItems, modalIsOpen, selectedItemId } from "../../redux/selectors.js";
 import PopUp from "../PopUp/PopUp.jsx";
-import { changeModalOpen, changeSelectedItemId } from "../../redux/slice.js";
+import { addToFavorites, changeModalOpen, changeSelectedItemId, removeFromFavorites } from "../../redux/slice.js";
 
 const CatalogItem = ({ item }) => {
   const dispatch = useDispatch();
   const isModalOpen = useSelector(modalIsOpen);
   const selectedId = useSelector(selectedItemId);
+  const favorites = useSelector(favoriteItems);
+
+  const isFavorite = favorites.some((favorite) => favorite?.id === item?.id);
 
   const city = item?.address.split(",")[1]?.trim();
   const country = item?.address.split(",")[2]?.trim();
+
+  const handleFavoriteClick = () => {
+    if (isFavorite) {
+      dispatch(removeFromFavorites(item.id));
+    } else {
+      dispatch(addToFavorites(item));
+    }
+  };
 
   return (
     <StyledListItem key={item?.id}>
@@ -31,7 +42,7 @@ const CatalogItem = ({ item }) => {
       />
       <StyledGradient></StyledGradient>
 
-      <StyledFavBtn type="button">
+      <StyledFavBtn type="button" onClick={handleFavoriteClick}>
         <FaRegHeart
           style={{ cursor: "pointer", color: "var(--white)" }}
           size={18}

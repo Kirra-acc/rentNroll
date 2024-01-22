@@ -4,4 +4,4 @@ export const modalIsOpen = (state) => state.carsGallery.modalIsOpen;
 export const selectedItemId = (state) => state.carsGallery.selectedItemId;
 export const selectedFilters = state => state.carsGallery.filters;
 export const isFirstRender = state => state.carsGallery.firstRender;
-
+export const favoriteItems = state => state.carsGallery.favItems;

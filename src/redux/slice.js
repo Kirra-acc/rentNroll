@@ -6,6 +6,7 @@ export const slice = createSlice({
   name: "catalog",
   initialState: {
     items: [],
+    favItems: [],
     modalIsOpen: false,
     loading: false,
     select: "",
@@ -33,6 +34,12 @@ export const slice = createSlice({
     },
     changeRender: (state, { payload }) => {
       state.firstRender = payload;
+    },
+    addToFavorites: (state, { payload }) => {
+      state.favItems.push(payload);
+    },
+    removeFromFavorites: (state, { payload }) => {
+      state.favItems = state.favItems.filter((item) => item.id !== payload);
     },
   },
   extraReducers: (builder) => {
@@ -65,4 +72,6 @@ export const {
   addHomeItems,
   changeFilters,
   changeRender,
+  addToFavorites,
+  removeFromFavorites,
 } = slice.actions;
