@@ -60,7 +60,9 @@ const Catalog = () => {
   const uniqueOptions = [...new Set(gallery?.map((item) => item?.make))];
   const arrOfOptions = uniqueOptions.sort();
 
-  const uniquePrices = [...new Set(gallery?.map((item) => item?.rentalPrice))];
+  const uniquePrices = [
+    ...new Set(gallery?.map((item) => item?.rentalPrice.replace("$", ""))),
+  ];
   const arrOfPrices = uniquePrices.sort((a, b) => a - b);
 
   const DropdownIndicator = (props) => {
@@ -107,10 +109,35 @@ const Catalog = () => {
     );
   };
 
+  function selectMake() {
+    const makes = [{ value: "", label: "All" }];
+    makes.push(
+      ...arrOfOptions.map((make) => {
+        return { value: make, label: make };
+      })
+    );
+
+    return makes;
+  }
+
+  function selectPrice() {
+    const prices = [{ value: "", label: "All" }];
+
+    prices.push(
+      ...arrOfPrices.map((price) => {
+        return { value: price, label: `${price} $` };
+      })
+    );
+
+    return prices;
+  }
+
   const filteredGallery = gallery
     .filter((item) => (makeFilter ? item.make === makeFilter : true))
     .filter((item) =>
-      rentalPriceFilter ? item.rentalPrice === rentalPriceFilter : true
+      rentalPriceFilter
+        ? item.rentalPrice.replace("$", "") == rentalPriceFilter
+        : true
     )
     .filter((item) =>
       fromMileageFilter ? item.mileage >= fromMileageFilter : true
@@ -126,10 +153,11 @@ const Catalog = () => {
           <label htmlFor="make">Car brand</label>
           <Select
             name="make"
-            options={arrOfOptions.map((make) => ({ value: make, label: make }))}
+            options={selectMake()}
             placeholder="Enter the text"
             styles={selectStyle}
             onChange={getSelectValue}
+            width={"224px"}
             components={{
               DropdownIndicator,
               IndicatorSeparator: () => null,
@@ -140,14 +168,12 @@ const Catalog = () => {
         <StyledSelectFilter>
           <label htmlFor="rentalPrice">Price/ 1 hour</label>
           <Select
-            options={arrOfPrices.map((price) => ({
-              value: price,
-              label: price,
-            }))}
+            options={selectPrice()}
             placeholder="To $"
             name="rentalPrice"
             styles={selectStyle}
             onChange={getSelectValue}
+            width={"125px"}
             components={{
               DropdownIndicator,
               IndicatorSeparator: () => null,

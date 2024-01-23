@@ -112,7 +112,6 @@ export const selectStyle = {
   control: (styles) => ({
     ...styles,
     backgroundColor: "var(--accent-filter)",
-    width: "224px",
     height: "48px",
     border: "none",
     paddingLeft: "18px",
