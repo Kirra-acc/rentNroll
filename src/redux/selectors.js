@@ -5,3 +5,4 @@ export const selectedFilters = (state) => state.carsGallery.filters;
 export const isFirstRender = (state) => state.carsGallery.firstRender;
 export const favoriteItems = (state) => state.carsGallery.favItems;
 export const loadMore = (state) => state.carsGallery.isLoadMore;
+export const loading = (state) => state.carsGallery.loading;

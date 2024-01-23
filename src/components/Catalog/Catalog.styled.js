@@ -96,7 +96,6 @@ export const StyledFavBtn = styled.button`
   fill: transparent;
   &:hover svg {
     fill: var(--button-active);
-    /* stroke: var(--button-active); */
   }
 `;
 
@@ -182,6 +181,8 @@ export const StyledMoreBtn = styled.button`
   margin: 0 auto;
   background: transparent;
   border: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
 
   &:hover,
   &:focus {
