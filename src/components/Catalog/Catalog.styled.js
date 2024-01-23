@@ -12,7 +12,6 @@ export const StyledList = styled.ul`
   gap: 28px;
 
   width: 1184px;
-  /* height: 426px; */
 `;
 
 export const StyledListItem = styled.li`
@@ -22,6 +21,7 @@ export const StyledListItem = styled.li`
   width: 274px;
   position: relative;
   img {
+    transition: transform 0.5s ease;
     margin-bottom: 8px;
     border-radius: 14px;
     z-index: -1;
@@ -113,9 +113,6 @@ export const selectStyle = {
     paddingBottom: "14px",
     display: "flex",
     cursor: "pointer",
-    // zIndex: '6',
-    //   padding: '14px 89px 14px 18px',
-    //   gap: '32px',
     outline: "none",
     borderRadius: "14px",
     boxShadow: "none",
@@ -173,7 +170,6 @@ export const StyledMoreWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
 `;
 
 export const StyledMoreBtn = styled.button`

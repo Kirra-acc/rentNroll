@@ -28,6 +28,9 @@ export const StyledHeader = styled.header`
     a {
       font-weight: 700px;
       color: var(--home-blue);
+      &.active {
+        text-decoration: underline;
+      }
       &:hover,
       &:focus {
         color: var(--button-active);

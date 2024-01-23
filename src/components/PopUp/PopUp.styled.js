@@ -16,7 +16,7 @@ export const StyledModalBackdrop = styled.div`
 `;
 export const StyledModalForm = styled.form`
   width: 541px;
-  height: 752px;
+  min-height: 752px;
   background-color: var(--white);
   border-radius: 24px;
   position: relative;

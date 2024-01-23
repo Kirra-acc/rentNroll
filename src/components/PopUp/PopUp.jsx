@@ -71,9 +71,9 @@ const PopUp = ({ item }) => {
           <StyledModalDesc>
             <p>{city} |</p>
             <p>{country} |</p>
-            <p>Id: {item?.id}</p>
+            <p>Id: {item?.id} |</p>
             <p>Year: {item?.year} |</p>
-            <p>Type: {item?.type} </p>
+            <p>Type: {item?.type} |</p>
             <p>Fuel Consumption: {item?.fuelConsumption} |</p>
             <p>Engine Size: {item?.engineSize}</p>
           </StyledModalDesc>

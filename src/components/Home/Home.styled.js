@@ -91,3 +91,33 @@ export const StyledCard = styled.div`
     }
   }
 `;
+
+export const StyledHomeGuide = styled.div`
+  padding-top: 50px;
+  h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--descr-text);
+    font-family: "Manrope Medium";
+    font-size: 24px;
+    line-height: 1.33;
+  }
+  ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "Manrope Regular";
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--descr-text);
+    svg {
+      color: var(--home-accent);
+    }
+  }
+`;

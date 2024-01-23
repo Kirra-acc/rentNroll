@@ -96,11 +96,6 @@ const Catalog = () => {
     setFromMileageFilter(Number(fromMileageValue));
     setToMileageFilter(Number(toMileageValue));
 
-    // console.log("makeValue:", makeValue);
-    // console.log("rentalPriceValue:", rentalPriceValue);
-    // console.log("fromMileageValue:", fromMileageValue);
-    // console.log("toMileageValue:", toMileageValue);
-
     dispatch(
       changeFilters({
         makeValue,
@@ -129,7 +124,6 @@ const Catalog = () => {
         <StyledSelectFilter>
           <label htmlFor="make">Car brand</label>
           <Select
-            // required
             name="make"
             options={arrOfOptions.map((make) => ({ value: make, label: make }))}
             placeholder="Enter the text"
@@ -145,7 +139,6 @@ const Catalog = () => {
         <StyledSelectFilter>
           <label htmlFor="rentalPrice">Price/ 1 hour</label>
           <Select
-            // required
             options={arrOfPrices.map((price) => ({
               value: price,
               label: price,
@@ -174,6 +167,9 @@ const Catalog = () => {
       </StyledFiltersForm>
 
       <StyledList>
+        {filteredGallery?.length === 0 && (
+          <h2>We have no cars matching your filter request</h2>
+        )}
         {filteredGallery?.map((item) => (
           <CatalogItem key={item?.id} item={item} />
         ))}

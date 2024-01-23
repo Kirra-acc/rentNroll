@@ -1,9 +1,20 @@
 import React from "react";
 import frontImg from "../../assets/noul-bmw-x5.webp";
-import { StyledCard, StyledFrontDesc, StyledHomeSection } from "./Home.styled";
+import {
+  StyledCard,
+  StyledFrontDesc,
+  StyledHomeGuide,
+  StyledHomeSection,
+} from "./Home.styled";
 import { StyledContainer } from "../Catalog/Catalog.styled";
 import { NavLink } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa6";
+import {
+  PiNumberSquareOneThin,
+  PiNumberSquareFourThin,
+  PiNumberSquareThreeThin,
+  PiNumberSquareTwoThin,
+} from "react-icons/pi";
 
 const Home = () => {
   return (
@@ -32,6 +43,31 @@ const Home = () => {
           </div>
         </StyledCard>
       </StyledHomeSection>
+
+      <StyledHomeGuide>
+        <h2>
+          Car rental service provides customers with the following
+          opportunities:
+        </h2>
+        <ul>
+          <li>
+            <PiNumberSquareOneThin size={60} />
+            <p>Open our site in the browser</p>
+          </li>
+          <li>
+            <PiNumberSquareTwoThin size={60} />
+            <p>Check out our catalog</p>
+          </li>
+          <li>
+            <PiNumberSquareThreeThin size={60} />
+            <p>Choose the car you are most interested in</p>
+          </li>
+          <li>
+            <PiNumberSquareFourThin size={60} />
+            <p>Contact us by clicking the Rental Car button</p>
+          </li>
+        </ul>
+      </StyledHomeGuide>
     </StyledContainer>
   );
 };

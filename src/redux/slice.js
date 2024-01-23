@@ -19,7 +19,12 @@ export const slice = createSlice({
 
   reducers: {
     changeSelectFilter: (state, { payload }) => {
-      state.select = payload;
+      if (payload.length < 12) {
+        state.isLoadMore = false;
+        state.select = payload;
+      } else {
+        state.select = payload;
+      }
     },
     changeModalOpen: (state, { payload }) => {
       state.modalIsOpen = payload;
