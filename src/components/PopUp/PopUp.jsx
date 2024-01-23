@@ -107,8 +107,7 @@ const PopUp = ({ item }) => {
                 </li>
               ))}
               <li>
-                Mileage:{" "}
-                <span>&nbsp;{Number(item?.mileage).toLocaleString()}</span>
+                Mileage: <span>&nbsp;{item?.mileage.toLocaleString()}</span>
               </li>
               <li>
                 Price:{" "}
