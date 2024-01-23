@@ -752,4 +752,4 @@ input[type=number] {
     -moz-appearance:textfield; 
 }
 
-`;mu.createRoot(document.getElementById("root")).render(O.jsx(Tx,{basename:"/rentNroll",children:O.jsxs(nb,{store:ty,children:[O.jsx(t5,{}),O.jsx($b,{autoClose:1500}),O.jsx(L5,{})]})}));
+`;mu.createRoot(document.getElementById("root")).render(O.jsx(Tx,{basename:"/rentNroll/",children:O.jsxs(nb,{store:ty,children:[O.jsx(t5,{}),O.jsx($b,{autoClose:1500}),O.jsx(L5,{})]})}));
