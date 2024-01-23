@@ -43,9 +43,13 @@ export const slice = createSlice({
     },
     addToFavorites: (state, { payload }) => {
       state.favItems.push(payload);
+      toast.success(
+        `${payload.make} ${payload.model} is added to "Favorites"!`
+      );
     },
     removeFromFavorites: (state, { payload }) => {
       state.favItems = state.favItems.filter((item) => item.id !== payload);
+      toast.info(`The car is removed from "Favorites"!`);
     },
   },
   extraReducers: (builder) => {
