@@ -16,6 +16,7 @@ import {
   StyledInputFilter,
   StyledInputTo,
   StyledInputFrom,
+  StyledNotifyEmpty,
 } from "./Catalog.styled.js";
 import Select, { components } from "react-select";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
@@ -166,10 +167,12 @@ const Catalog = () => {
         </StyledSelectFilter>
       </StyledFiltersForm>
 
+      {filteredGallery?.length === 0 && (
+        <StyledNotifyEmpty>
+          We have no cars matching your filter request
+        </StyledNotifyEmpty>
+      )}
       <StyledList>
-        {filteredGallery?.length === 0 && (
-          <h2>We have no cars matching your filter request</h2>
-        )}
         {filteredGallery?.map((item) => (
           <CatalogItem key={item?.id} item={item} />
         ))}

@@ -6,6 +6,18 @@ export const StyledContainer = styled.div`
   padding-left: 8px;
   padding-right: 8px;
 `;
+export const StyledNotifyEmpty = styled.h2`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 50px;
+
+  font-family: "Manrope Medium";
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--descr-text);
+`;
 export const StyledList = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -108,8 +120,8 @@ export const selectStyle = {
     border: "none",
     paddingLeft: "18px",
     paddingRight: "18px",
-    paddingTop: "14px",
-    paddingBottom: "14px",
+    paddingTop: "8px",
+    paddingBottom: "8px",
     display: "flex",
     cursor: "pointer",
     outline: "none",

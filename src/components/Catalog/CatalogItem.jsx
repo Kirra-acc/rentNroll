@@ -52,8 +52,8 @@ const CatalogItem = ({ item }) => {
       <StyledGradient></StyledGradient>
 
       <StyledFavBtn type="button" onClick={handleFavoriteClick}>
-        {(!isFavorite && <FaRegHeart />) || (
-          <FaHeart style={{ fill: "blue" }} />
+        {(!isFavorite && <FaRegHeart style={{ fill: "var(--white)" }} />) || (
+          <FaHeart style={{ fill: "var(--button)" }} />
         )}
       </StyledFavBtn>
 
