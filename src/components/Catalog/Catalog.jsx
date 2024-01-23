@@ -43,13 +43,13 @@ const Catalog = () => {
   };
 
   useEffect(() => {
-    if (firstRender) {
+    // if (firstRender) {
       dispatch(fetchCarsGalleryThunk(page));
       setPage(page + 1);
       dispatch(changeRender(false));
-    } else {
-      dispatch(changeRender(false));
-    }
+    // } else {
+    //   dispatch(changeRender(false));
+    // }
   }, [dispatch, page, firstRender]);
 
   const handleLoadMoreClick = () => {
