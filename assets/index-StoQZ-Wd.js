@@ -178,6 +178,10 @@ Error generating stack: `+i.message+`
     color: var(--descr-text);
     svg {
       color: var(--home-accent);
+      transition: transform 0.6s ease;
+    }
+    &:hover svg {
+      transform: scale(1.3);
     }
   }
 `,Wa=V.div`
@@ -273,9 +277,6 @@ Error generating stack: `+i.message+`
   border: none;
   background-color: transparent;
   fill: transparent;
-  &:hover svg {
-    fill: var(--button-active);
-  }
 `,ih={control:e=>({...e,backgroundColor:"var(--accent-filter)",width:"224px",height:"48px",border:"none",paddingLeft:"18px",paddingRight:"18px",paddingTop:"8px",paddingBottom:"8px",display:"flex",cursor:"pointer",outline:"none",borderRadius:"14px",boxShadow:"none"}),singleValue:e=>({...e,fontFamily:"Manrope Medium",color:"var(--descr-text)",fontSize:"18px"}),placeholder:e=>({...e,fontFamily:"Manrope Medium",color:"var(--descr-text)",fontSize:"18px"}),menu:e=>({...e,borderRadius:"14px",backgroundColor:"var(--white)",overflow:"hidden",color:"var(--filter-dropdown-text)",fontFamily:"Manrope Medium",fontSize:"16px","&::before":{background:"var(--white)",content:'""',filter:"blur(50px)",position:"absolute",inset:"0%",zIndex:"-1"}}),option:(e,{isFocused:t,isSelected:n})=>t?{...e,color:"var(--descr-text)"}:n?{...e,color:"var(--descr-text)"}:{...e}},q2=V.div`
   width: 100%;
   display: flex;
