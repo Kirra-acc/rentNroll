@@ -106,9 +106,6 @@ export const StyledFavBtn = styled.button`
   border: none;
   background-color: transparent;
   fill: transparent;
-  &:hover svg {
-    fill: var(--button-active);
-  }
 `;
 
 export const selectStyle = {

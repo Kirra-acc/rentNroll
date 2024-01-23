@@ -118,6 +118,10 @@ export const StyledHomeGuide = styled.div`
     color: var(--descr-text);
     svg {
       color: var(--home-accent);
+      transition: transform 0.6s ease;
+    }
+    &:hover svg {
+      transform: scale(1.3);
     }
   }
 `;
