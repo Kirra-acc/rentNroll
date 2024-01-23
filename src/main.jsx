@@ -6,11 +6,13 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import Global from "./css/common.js";
+import { ToastContainer } from "react-toastify";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter basename="/rentNroll">
     <Provider store={store}>
       <App />
+      <ToastContainer autoClose={1500} />
       <Global />
     </Provider>
   </BrowserRouter>
