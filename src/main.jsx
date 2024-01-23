@@ -10,7 +10,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter basename="/rentNroll">
+  <BrowserRouter basename="/rentNroll/">
     <Provider store={store}>
       <App />
       <ToastContainer autoClose={1500} />
