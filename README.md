@@ -31,10 +31,13 @@ Rent&Roll is built using a modern tech stack to ensure a robust and efficient ap
 
 2. **Install dependencies:**
    
-```cd rentNroll
-```npm install
+cd rentNroll
+npm install
 
 3. **Run the application:**
 
-```npm start
+npm start
+
+
+Copy and paste this section directly into your README.md file. It provides clear and structured instructions for users on how to install the project dependencies.
 
