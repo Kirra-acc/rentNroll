@@ -33,8 +33,7 @@ Rent&Roll is built using a modern tech stack to ensure a robust and efficient ap
    ```bash
    cd rentNroll
 
-   ```bash
-   npm install
+ npm install
 
 3. **Run the application:**
    ```bash
