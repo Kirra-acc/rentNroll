@@ -29,12 +29,14 @@ Rent&Roll is built using a modern tech stack to ensure a robust and efficient ap
    ```bash
    git clone https://github.com/Kirra-acc/rentNroll.git
 
-2. **Install dependencies:**
+2. **Navigate to the project directory:**
    ```bash
    cd rentNroll
+   
+3. **Install dependencies:**
+   ```bash
+    npm install
 
- npm install
-
-3. **Run the application:**
+4. **Run the application:**
    ```bash
    npm start
